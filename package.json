@@ -7,9 +7,9 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node --experimental-modules index.js",
     "server": "nodemon index.js",
-    "local": "NODE_ENV=development nodemon index.js",
+    "local": "NODE_ENV=development nodemon --exec babel-node index.js",
     "prod-test": "NODE_ENV=production nodemon index.js",
     "prod": "pm2-runtime start pm2.json --env prod",
     "prod-background": "pm2 start pm2.json --env prod",
@@ -21,6 +21,8 @@
     "dev": "concurrently \"npm run local\" \"npm run client\""
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cookie-session": "^2.0.0-beta.3",

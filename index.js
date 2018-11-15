@@ -1,11 +1,12 @@
-const express = require('express');
-const bodyParser =  require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
+import thaiYumRoutes from './routes/thaiYumRoutes';
 
 const app = express();
 app.use(bodyParser({limit: '75mb'}));
 app.use(bodyParser.json());
 
-require('./routes/thaiYumRoutes')(app);
+thaiYumRoutes(app);
 
 if (process.env.NODE_ENV === 'production') {
     // Express wil serve up production assets
