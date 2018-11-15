@@ -1,0 +1,33 @@
+{
+  "name": "fake-api-app",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=8.11.2",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "local": "NODE_ENV=development nodemon index.js",
+    "prod-test": "NODE_ENV=production nodemon index.js",
+    "prod": "pm2-runtime start pm2.json --env prod",
+    "prod-background": "pm2 start pm2.json --env prod",
+    "restart-prod": "pm2-runtime restart pm2.json --env prod",
+    "restart-prod-background": "pm2 restart pm2.json --env prod",
+    "client": "npm run start --prefix client",
+    "pull-and-build": "git pull && npm install && npm install --prefix client && npm run build --prefix client",
+    "client-build": "npm run build --prefix client",
+    "dev": "concurrently \"npm run local\" \"npm run client\""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "cookie-session": "^2.0.0-beta.3",
+    "es6-promisify": "^6.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "nodemon": "^1.18.4",
+    "path-parser": "^4.2.0"
+  }
+}
